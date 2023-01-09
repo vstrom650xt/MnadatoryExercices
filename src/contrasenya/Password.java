@@ -5,11 +5,9 @@ public class Password {
     //de 48 a 122
     private int longitud;
 
-    public static String getContrasenya() {
-        return contrasenya;
-    }
 
-    private static String contrasenya;
+
+    private  String contrasenya;
     private static final int defLongitu = 10;
 
     //fuerte
@@ -23,7 +21,6 @@ public class Password {
     }
 
     public Password(int longitud) {
-        this.longitud = longitud;
         this.contrasenya = generarPassword();
 
     }
@@ -90,30 +87,13 @@ public class Password {
 
         }
 
-        if (contCap>=2 && contLow>=1 && contNum > 4){
-            return true;
-
-
-        }
-
-
-//        System.out.println(contCap + " mayus");
-//        System.out.println(contLow + " minus");
-//        System.out.println(contNum + " nums");
-
-
-        return false;
-
-
+        return contCap >= 2 && contLow >= 1 && contNum > 4;
     }
 
 
     @Override
     public String toString() {
-        return "Password{" +
-                "contrasenya='" + contrasenya + '\'' +
-                ", defLongitu=" + defLongitu +
-                '}';
+        return  contrasenya;
     }
 
 

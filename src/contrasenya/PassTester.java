@@ -25,6 +25,9 @@ public class PassTester {
 
         for (int i = 0; i < numPass; i++) {
             sonFuertes[i]=passwords[i].esFuerte();
+            System.out.println(sonFuertes[i] + " " + passwords[i]);
+
+
 
 
         }
