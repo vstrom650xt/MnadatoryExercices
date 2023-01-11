@@ -1,20 +1,16 @@
 package biblioteca;
 
 public class Libro {
-    @Override
-    public String toString() {
-        return "Libro{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", numCopy=" + numCopy +
-                ", numShared=" + numShared +
-                '}';
-    }
+
 
     public Libro(String title, String author, int numCopy) {
         this.title = title;
         this.author = author;
         this.numCopy = numCopy;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     private String title, author;
@@ -37,7 +33,15 @@ public class Libro {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", numCopy=" + numCopy +
+                ", numShared=" + numShared +
+                '}';
+    }
 
 
 }
