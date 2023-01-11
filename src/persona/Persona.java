@@ -42,12 +42,12 @@ public class Persona {
         return age;
     }
 
-    public Persona(String name, String lastname, int age,  double weight, double height){
+    public Persona(String name, String lastname, int age,  double weight, double height,SexType sexType){
         this.name =name;
         this.lastName =lastname;
         this.age =age;
         this.dni=generateDni();
-        this.sexType = SexType.No;
+        this.sexType = sexType;
         this.weight = weight;
         this.height =height;
         this.withDni=true;
@@ -62,6 +62,8 @@ public class Persona {
         this.name = nombre;
         this.lastName = apellidos;
         this.age = edad;
+        this.sexType = SexType.NO;
+
 
 
     }

@@ -18,9 +18,10 @@ public class PersonaTester {
         int age;
         double altura,peso;
 
-        SexType sexType;
+        SexType sexType ;
         Persona p3;
 
+        //SexType s = SexType.No;
         System.out.println("ur name");
         name = sc.nextLine();
         System.out.println("ur lastname");
@@ -34,8 +35,6 @@ public class PersonaTester {
             altura=sc.nextDouble();
             System.out.println("pon peso");
             peso=sc.nextDouble();
-            p3=new Persona(name,lastName,age,altura,peso);
-            System.out.println(p3);
             System.out.println("would u like to change your sextype?");
             ans=sc.next();
             if (ans.equals("s")){
@@ -44,20 +43,30 @@ public class PersonaTester {
                 a=sc.nextInt();
 
                 if (a==1){
-                    p3.setSexType(SexType.Hombre);
+                    sexType= SexType.HOMBRE;
+                  //  p3.setSexType(SexType.HOMBRE);
                 }else if (a==2){
-                    p3.setSexType(SexType.Mujer);
+                    sexType= SexType.MUJER;
+
+                   // p3.setSexType(SexType.MUJER);
                 }else {
-                    p3.setSexType(SexType.No);
+                    sexType= SexType.NO;
+
+                   // p3.setSexType(SexType.NO);
                 }
+
             }
+            sexType= SexType.NO;
+            p3=new Persona(name,lastName,age,altura,peso,sexType);
+            System.out.println(p3);
+
 
         }else{
 
             p3=new Persona(name,lastName,age);
             System.out.println(p3);
         }
-        p3.setSexType(SexType.Hombre);
+        p3.setSexType(SexType.HOMBRE);
         System.out.println(p3);
 
 

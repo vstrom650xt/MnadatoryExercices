@@ -1,9 +1,9 @@
 package persona;
 
 public enum SexType {
-    Hombre("h"),
-    Mujer("m"),
-    No("n");
+    HOMBRE("h"),
+    MUJER("m"),
+    NO("n");
 
 
 
