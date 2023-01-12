@@ -1,8 +1,17 @@
 package biblioteca;
 
+import java.util.Arrays;
+
 public class Biblioteca {
 
-    final Libro[] libros = new Libro[100];
+    @Override
+    public String toString() {
+        return "Biblioteca{" +
+                "libros=" + Arrays.toString(libros) +
+                '}';
+    }
+
+   private   Libro[] libros = new Libro[100];
     private String[][] allBooks = {
             {"Don Quijote de la Mancha", "Miguel de Cervantes Saavedra"},
             {"Cien años de soledad", "Gabriel García Márquez"},
@@ -29,18 +38,75 @@ public class Biblioteca {
     }
 
 
-    public int findTitle(String title){
-        int i=0;
-        boolean its;
-        do {
-            if (libros[i].getTitle().equals(title){
+    public void addBook(Libro libro){
+        for (int i = 0; i < libros.length; i++) {
+            if (libros[i]==null){
+                libros[i] = libro;
+            }
+        }
+    }
 
 
+    public void deleteBook(Libro libro){
+        int i = 0 ;
+
+        for ( i = 0; i < libros.length; i++) {
+            if (libros[i]==libro){
+                libros[i] = null;
             }
 
+        }
 
-        }while ();
+     //   quicksort(libros[i].getTitle(),49,50);
 
+    }
+
+    public int findTitle(String title){
+        for (int i = 0; i < allBooks.length; i++) {
+            if (allBooks[i][0].contains(title))
+                return i;
+        }
+        return -1;
+    }
+
+    public int puestoUsados(){
+        int cont =0;
+        for (int i = 0; i < libros.length; i++) {
+            if (libros[i]!= null)
+                cont++;
+        }
+
+
+        return cont;
+
+
+
+    }
+    public  Libro[] sortBooks(){
+        int cont = puestoUsados(), i = 0;
+        Libro aux = null;
+//        do {
+//            if (libros[i] == null)
+//             aux = libros[i];
+//            libros[i]=libros[i+1];
+//            libros[libros.length-1] = aux;
+//            i++;
+//        }while (i<cont|| );
+
+            if (libros[i]==null && libros[libros.length -1] != null){
+                aux=libros[libros.length-1];
+                libros[i] = aux;
+                libros[libros.length-1] = null;
+            }
+
+        return libros;
+    }
+
+
+    public  void swap(String[][] v, int i, int j) {
+        String[] aux = v[i];
+        v[i] = v[j];
+        v[j] = aux;
 
     }
 

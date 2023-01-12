@@ -3,9 +3,19 @@ package biblioteca;
 public class BiblioTester {
 
     public static void main(String[] args) {
-        Libro p = new Libro("ptt","pp", 3);
-        p.decreaseBook(p);
-        System.out.println(p);
+        Libro ptt = new Libro("pttStyle","ptt",5);
+
+
+        Biblioteca pp = new Biblioteca();
+
+        pp.addBook(ptt);
+       // System.out.println(pp);
+
+        pp.deleteBook(ptt);
+        System.out.println(pp);
+
+
+
 
     }
 }

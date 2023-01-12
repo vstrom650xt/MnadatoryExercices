@@ -37,9 +37,7 @@ public class Libro {
     public String toString() {
         return "Libro{" +
                 "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", numCopy=" + numCopy +
-                ", numShared=" + numShared +
+
                 '}';
     }
 
