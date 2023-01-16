@@ -15,19 +15,20 @@ public class PersonaTester {
         //si pone el dni tiramos del constructor grande , sino se queda en el peq
         String name;
         String lastName;
-        int age;
+        int age,edad;
         double altura,peso;
 
-        SexType sexType ;
-        Persona p3;
+        SexType sexType;
+        Persona p3 ;
 
-        //SexType s = SexType.No;
         System.out.println("ur name");
         name = sc.nextLine();
         System.out.println("ur lastname");
         lastName = sc.nextLine();
         System.out.println("ur age");
         age = sc.nextInt();
+
+        p3=new Persona(name,lastName,age);
         System.out.println("desea dni?");
         String ans = sc.next();
         if (ans.equals("s")){
@@ -35,6 +36,7 @@ public class PersonaTester {
             altura=sc.nextDouble();
             System.out.println("pon peso");
             peso=sc.nextDouble();
+         //   System.out.println(p3);
             System.out.println("would u like to change your sextype?");
             ans=sc.next();
             if (ans.equals("s")){
@@ -44,53 +46,18 @@ public class PersonaTester {
 
                 if (a==1){
                     sexType= SexType.HOMBRE;
-                  //  p3.setSexType(SexType.HOMBRE);
                 }else if (a==2){
                     sexType= SexType.MUJER;
-
-                   // p3.setSexType(SexType.MUJER);
                 }else {
                     sexType= SexType.NO;
-
-                   // p3.setSexType(SexType.NO);
                 }
-
+                p3=new Persona(name,lastName,age,altura,peso,sexType);
             }
-            sexType= SexType.NO;
-            p3=new Persona(name,lastName,age,altura,peso,sexType);
-            System.out.println(p3);
-
-
         }else{
-
             p3=new Persona(name,lastName,age);
             System.out.println(p3);
         }
         p3.setSexType(SexType.HOMBRE);
         System.out.println(p3);
-
-
-
-//
-//
-//        Persona p = new Persona(name,lastName,age);
-//        System.out.println(p);
-
-
-//        Persona p2 = new Persona(name,lastName,29,70,1.78);
-//        System.out.println(p2);
-//        p2.;
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

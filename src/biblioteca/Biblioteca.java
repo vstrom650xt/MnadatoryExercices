@@ -4,14 +4,8 @@ import java.util.Arrays;
 
 public class Biblioteca {
 
-    @Override
-    public String toString() {
-        return "Biblioteca{" +
-                "libros=" + Arrays.toString(libros) +
-                '}';
-    }
 
-   private   Libro[] libros = new Libro[100];
+    private Libro[] libros = new Libro[100];
     private String[][] allBooks = {
             {"Don Quijote de la Mancha", "Miguel de Cervantes Saavedra"},
             {"Cien años de soledad", "Gabriel García Márquez"},
@@ -22,92 +16,143 @@ public class Biblioteca {
             {"Desolación", "Gabriela Mistral"}, {"Rayuela", "Julio Cortázar"},
             {"El Aleph", "Jorge Luis Borges"},
             {"El amor en los tiempos del cólera", "Gabriel García Márquez"}};
-    private String name, barrio, poblacion;
-    private  int numBook;
+    private String name = "";
 
 
-    public Biblioteca() {
-//        libros[0] = new Libro("pp", "ptt", 3);
-//        libros[1] = new Libro("pp2", "ptt2", 3);
-//        libros[2] = new Libro("pp3", "ptt3", 3);
-
+    public Biblioteca(String... name) {
         for (int i = 0; i < allBooks.length; i++) {
-            libros[i]=new Libro(allBooks[i][0],allBooks[i][1],3);
+            libros[i] = new Libro(allBooks[i][0], allBooks[i][1]);
         }
-        this.numBook=30;
+        int numBook = 30;
+        this.name = Arrays.toString(name);
     }
 
 
-    public void addBook(Libro libro){
+    public int contBooks() {
+        int cont = 0;
         for (int i = 0; i < libros.length; i++) {
-            if (libros[i]==null){
+            if (libros[i] != null) {
+                cont++;
+            }
+        }
+
+        return cont;
+
+    }
+
+    public Libro addBook(Libro libro, int numEjemp) {
+        for (int i = 0; i < libros.length; i++) {
+            if (libros[i] == null) {
                 libros[i] = libro;
+                contBooks();
+                return libros[i];
             }
         }
+        return libro;
     }
 
 
-    public void deleteBook(Libro libro){
-        int i = 0 ;
+    public Object deleteBook(String libro) {
 
-        for ( i = 0; i < libros.length; i++) {
-            if (libros[i]==libro){
+        for (int i = 0; i < contBooks(); i++) {
+            if (libros[i].getTitle().contains(libro)) {
                 libros[i] = null;
-            }
+                sortBooks();
+                contBooks();
+                return libros[i];
 
+
+            }
         }
 
-     //   quicksort(libros[i].getTitle(),49,50);
+        System.out.println("we couldnt find that book");
 
+        return libros;
     }
 
-    public int findTitle(String title){
-        for (int i = 0; i < allBooks.length; i++) {
-            if (allBooks[i][0].contains(title))
+    public int findTitle(String title) {
+        for (int i = 0; i < libros.length; i++) {
+            if (libros[i].getTitle().contains(title))
                 return i;
         }
         return -1;
     }
 
-    public int puestoUsados(){
-        int cont =0;
+
+
+    public Libro[] sortBooks() {
+        int index = 0;
+        Libro[] aux = new Libro[libros.length];
         for (int i = 0; i < libros.length; i++) {
-            if (libros[i]!= null)
-                cont++;
+            if (libros[i] != null) {
+                aux[index] = libros[i];
+                index++;
+            }
         }
-
-
-        return cont;
-
-
+        libros = aux;
+        return libros;
 
     }
-    public  Libro[] sortBooks(){
-        int cont = puestoUsados(), i = 0;
-        Libro aux = null;
-//        do {
-//            if (libros[i] == null)
-//             aux = libros[i];
-//            libros[i]=libros[i+1];
-//            libros[libros.length-1] = aux;
-//            i++;
-//        }while (i<cont|| );
 
-            if (libros[i]==null && libros[libros.length -1] != null){
-                aux=libros[libros.length-1];
-                libros[i] = aux;
-                libros[libros.length-1] = null;
+    public boolean returnBook(String book) {
+        for (int i = 0; i < contBooks(); i++) {
+            if (libros[i].getTitle().contains(book)){
+                libros[i].increaseBook();
+            }
+        }
+        return false;
+
+    }
+
+    public boolean giveBook(String book) {
+
+        if (findTitle(book)== -1)
+            return false;
+
+        for (int i = 0; i < contBooks(); i++) {
+            if (libros[i].getTitle().contains(book)){
+                libros[i].decreaseBook();
+            }
+        }
+        return false;
+    }
+
+//    public boolean giveBook(Libro book) {
+//        if (book.getStock()) {
+//            book.decreaseBook(book);
+//            return true;
+//        }
+//        return false;
+//    }
+
+    @Override
+    public String toString() {
+
+
+        String output = "Biblioteca " + name + "\n";
+
+        for (int i = 0; i < libros.length; i++) {
+            if (libros[i] != null) {
+                output += libros[i].toString();
+
             }
 
-        return libros;
-    }
-
-
-    public  void swap(String[][] v, int i, int j) {
-        String[] aux = v[i];
-        v[i] = v[j];
-        v[j] = aux;
+        }
+        return output;
 
     }
+// para ver los nulls
+//    @Override
+//    public String toString() {
+//
+//        String output = "Biblioteca " + name + "\n" +
+//                "Barrio " + barrio + "\n" +
+//                "Poblacion " + poblacion + "\n" + '}' + Arrays.toString(libros);
+//
+//
+//        return output;
+//
+//    }
+
 
 }

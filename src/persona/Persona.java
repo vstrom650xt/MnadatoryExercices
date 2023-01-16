@@ -13,9 +13,6 @@ public class Persona {
 
     }
 
-    public SexType getSexType() {
-        return sexType;
-    }
 
     private SexType sexType;
     private double weight;
@@ -29,18 +26,7 @@ public class Persona {
     boolean withDni;
 
 
-    public double getWeight() {
-        return weight;
-    }
 
-    public double getHeight() {
-        return height;
-    }
-
-
-    public int getAge() {
-        return age;
-    }
 
     public Persona(String name, String lastname, int age,  double weight, double height,SexType sexType){
         this.name =name;
@@ -68,6 +54,18 @@ public class Persona {
 
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+
+    public int getAge() {
+        return age;
+    }
     public int calcularIMC() {
         final int bajoPeso = -1;
         final int rangoNormal = 0;

@@ -3,10 +3,10 @@ package biblioteca;
 public class Libro {
 
 
-    public Libro(String title, String author, int numCopy) {
+    public Libro(String title, String author) {
         this.title = title;
         this.author = author;
-        this.numCopy = numCopy;
+        this.numCopy = 3;
     }
 
     public String getTitle() {
@@ -14,31 +14,37 @@ public class Libro {
     }
 
     private String title, author;
-    private int numCopy,numShared;
+    private int numCopy, numShared;
 
-    public boolean getStock(){
+    public boolean getStock() {
         return numCopy != 0;
     }
 
-    public void decreaseBook(Libro book){
-        if (getStock()){
+    public void decreaseBook() {
+        if (getStock()) {
             numCopy--;
-        }else{
+        } else {
             System.out.println("no qda");
         }
     }
 
-    public void increaseBook(Libro book){
-        numCopy++;
+    public void increaseBook() {
+        if (getStock()) {
+            numCopy++;
+        } else {
+            System.out.println("no qda");
+        }
     }
 
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "title='" + title + '\'' +
 
-                '}';
+        return "\t" + "Libro " +
+                "-> " + title + ' ' +
+                ", copies = " + numCopy + ' ' +
+                ", shared = " + numShared + '.' +
+                "\n";
     }
 
 
